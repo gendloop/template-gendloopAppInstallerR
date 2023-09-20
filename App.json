@@ -5,23 +5,22 @@
     "license": "LGPL-2.1-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/gendloop/RepoName/releases/download/v1.0.0/RepoName-$version-win64.7z",
+            "url": "https://github.com/gendloop/RepoName/releases/download/v1.0.0/RepoName-$version-win64.exe",
             "hash": ""
         }
     },
-    "bin": "RepoName.exe",
-    "innosetup": true,
-    "shortcuts": [
-        [
-            "RepoName.exe",
-            "RepoName"
+    "installer": {
+        "script": [
+            "Push-Location \"$dir\"",
+            "Start-Process RepoName-$version-win64.exe",
+            "Pop-Location"
         ]
-    ],
+    },
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/gendloop/RepoName/releases/download/v$version/RepoName-$version-win64.7z"
+                "url": "https://github.com/gendloop/RepoName/releases/download/v$version/RepoName-$version-win64.exe"
             }
         }
     }
