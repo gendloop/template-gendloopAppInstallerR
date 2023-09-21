@@ -11,6 +11,9 @@ if((Test-Path ..\config.txt) -eq $false) {
     return 
 } 
 
+#  获取exe拓展名
+$extension = [System.IO.Path]::GetExtension($exe_file);
+
 # 获取项目名称, 版本号
 $content= Get-Content -Raw "..\config.txt"
 $regex = "(?<=PROJECT_NAME=)[\-\[\w\]]+(?=`r`n)"
@@ -29,7 +32,7 @@ echo $version
 
 # rename
 $folder_path = Split-Path "$exe_file" -Parent
-Copy-Item $exe_file $folder_path\${project_name}-$($version[0]).$($version[1]).$($version[2])-win64.exe -Force
+7z a $env:userprofile\desktop\${project_name}-$($version[0]).$($version[1]).$($version[2])-win64.7z $exe_file -aoa
 
 
 
